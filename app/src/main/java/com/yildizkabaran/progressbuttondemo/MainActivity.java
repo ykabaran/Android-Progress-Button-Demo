@@ -1,4 +1,4 @@
-package com.yildizkabaran.texteffectsdemo;
+package com.yildizkabaran.progressbuttondemo;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,10 +6,14 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
+import com.yildizkabaran.texteffectsdemo.R;
+
 import java.util.Random;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
+
+  private static final String TAG = MainActivity.class.getSimpleName();
 
   private Button button;
   private Handler handler;
@@ -37,21 +41,21 @@ public class MainActivity extends Activity implements View.OnClickListener {
   @Override
   public void onClick(View v) {
     int id = v.getId();
-    switch (id){
+    switch (id) {
       case R.id.rainbow_button:
         onRainbowButtonClicked();
         break;
     }
   }
 
-  private void onRainbowButtonClicked(){
+  private void onRainbowButtonClicked() {
     button.setEnabled(false);
 
     // simulate some async work
     handler.postDelayed(new Runnable() {
       @Override
       public void run() {
-        if(button != null) {
+        if (button != null) {
           button.setEnabled(true);
         }
       }

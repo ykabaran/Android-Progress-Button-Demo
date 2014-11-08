@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Text Effects Demo</string>
+    <string name="app_name">Progress Button Demo</string>
     <string name="click_me">Click Me!\nI\'m Shiny</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.yildizkabaran.texteffectsdemo;
+package com.yildizkabaran.progressbuttondemo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,12 +7,36 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.widget.Button;
 
+import com.yildizkabaran.texteffectsdemo.R;
+
 /**
  * Created by yildizkabaran on 8.11.2014.
  */
 public class ProgressButton extends Button {
 
   private static final String TAG = ProgressButton.class.getSimpleName();
+  private static final int ANIMATION_DELAY = 20;
+  private static final float DEFAULT_COLOR_SPEED = 0.01F;
+  private float progressSpeed = DEFAULT_COLOR_SPEED;
+  private int[] progressColors;
+  private float currentOffset = 0F;
+  private int width;
+  private Runnable textColorAnimator = new Runnable() {
+    @Override
+    public void run() {
+      if (progressColors != null && progressColors.length >= 2) {
+        float startX = currentOffset * width;
+        final Shader shader = new LinearGradient(startX, 0, startX + width, 0, progressColors, null, Shader.TileMode.REPEAT);
+        getPaint().setShader(shader);
+        invalidate();
+      }
+
+      currentOffset += progressSpeed;
+      currentOffset %= 1F;
+
+      postDelayed(this, ANIMATION_DELAY);
+    }
+  };
 
   public ProgressButton(Context context) {
     super(context);
@@ -28,33 +52,7 @@ public class ProgressButton extends Button {
     setupAttributes(attrs);
   }
 
-  private static final int ANIMATION_DELAY = 20;
-  private static final float DEFAULT_COLOR_SPEED = 0.01F;
-
-  private int[] progressColors;
-  private float progressSpeed = DEFAULT_COLOR_SPEED;
-
-  private float currentOffset = 0F;
-  private int width;
-
-  private Runnable textColorAnimator = new Runnable() {
-    @Override
-    public void run() {
-      if(progressColors != null && progressColors.length >= 2) {
-        float startX = currentOffset * width;
-        final Shader shader = new LinearGradient(startX, 0, startX + width, 0, progressColors, null, Shader.TileMode.REPEAT);
-        getPaint().setShader(shader);
-        invalidate();
-      }
-
-      currentOffset += progressSpeed;
-      currentOffset %= 1F;
-
-      postDelayed(this, ANIMATION_DELAY);
-    }
-  };
-
-  private void setupAttributes(AttributeSet attrs){
+  private void setupAttributes(AttributeSet attrs) {
     TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.ProgressButton);
 
     final int numAttrs = a.getIndexCount();
@@ -63,9 +61,9 @@ public class ProgressButton extends Button {
       switch (attr) {
         case R.styleable.ProgressButton_progressColorList:
           int arrayId = a.getResourceId(i, -1);
-          if(arrayId >= 0){
+          if (arrayId >= 0) {
             // TypedArray does not provide a method for obtaining integer arrays so using resources instead
-            if(!isInEditMode()) {
+            if (!isInEditMode()) {
               int[] colors = getResources().getIntArray(arrayId);
               if (colors != null) {
                 setProgressColors(colors);
@@ -82,11 +80,11 @@ public class ProgressButton extends Button {
     a.recycle();
   }
 
-  public void setProgressColors(int[] colors){
+  public void setProgressColors(int[] colors) {
     this.progressColors = colors;
   }
 
-  public void setProgressSpeed(float speed){
+  public void setProgressSpeed(float speed) {
     this.progressSpeed = speed;
   }
 
@@ -100,18 +98,18 @@ public class ProgressButton extends Button {
   @Override
   public void setEnabled(boolean enabled) {
     super.setEnabled(enabled);
-    if(!enabled){
+    if (!enabled) {
       startTextColorAnimation();
     } else {
       stopTextColorAnimation();
     }
   }
 
-  private void startTextColorAnimation(){
+  private void startTextColorAnimation() {
     post(textColorAnimator);
   }
 
-  private void stopTextColorAnimation(){
+  private void stopTextColorAnimation() {
     removeCallbacks(textColorAnimator);
 
     getPaint().setShader(null);

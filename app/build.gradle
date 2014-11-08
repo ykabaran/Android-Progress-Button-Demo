@@ -5,7 +5,7 @@ android {
     buildToolsVersion "21.1.0"
 
     defaultConfig {
-        applicationId "com.yildizkabaran.texteffectsdemo"
+        applicationId "com.yildizkabaran.progressbuttondemo"
         minSdkVersion 8
         targetSdkVersion 21
         versionCode 1
