@@ -3,7 +3,7 @@ by Yildiz Kabaran
 
 An extended Button that will display animated text colors while in disabled state to indicated an asynchronous process is going on. The given colors will form a linear moving gradient on the button's text. The gradient colors and the movement speed are adjustable through code or xml.
 
-![Preview Image](http://i.imgbox.com/LS4EuFt0.gif)
+![Preview Image](http://i.imgbox.com/NZkxLPOO.gif)
 
 ## Installation
 
@@ -16,6 +16,7 @@ You can create in code:
 // create and customize the view
 final ProgressButton button = new ProgressButton(context);
 button.setProgressColors(colors); // set an int[] color array of length >= 2
+                                  // for best effect make the first and last colors same
 button.setProgressSpeed(-0.02F); // use a range (-1, 1) for best results
 								 //positive values move right, negative values move left
 button.setOnClickListener(new View.OnClickListener(){
