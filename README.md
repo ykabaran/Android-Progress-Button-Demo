@@ -3,7 +3,7 @@ by Yildiz Kabaran
 
 An extended Button that will display animated text colors while in disabled state to indicated an asynchronous process is going on. The given colors will form a linear moving gradient on the button's text. The gradient colors and the movement speed are adjustable through code or xml.
 
-![Preview Image](http://i.imgbox.com/NZkxLPOO.gif)
+![Preview Image](http://i.imgbox.com/ZQZr21nV.gif)
 
 ## Installation
 
