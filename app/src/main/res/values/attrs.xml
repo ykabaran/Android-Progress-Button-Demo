@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ProgressButton">
+        <attr name="progressColorList" format="reference"/>
+        <attr name="progressSpeed" format="float"/>
+    </declare-styleable>
+
+</resources>

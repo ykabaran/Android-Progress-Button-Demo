@@ -1,0 +1,18 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Light.NoTitleBar">
+    </style>
+
+    <style name="button">
+        <item name="android:padding">@dimen/button_padding</item>
+        <item name="android:background">@drawable/button_background</item>
+        <item name="android:textSize">@dimen/button_text</item>
+        <item name="android:textColor">@drawable/button_text</item>
+    </style>
+
+    <style name="rainbow_button" parent="button">
+        <item name="progressColorList">@array/rainbow</item>
+        <item name="progressSpeed">-0.02</item>
+    </style>
+
+</resources>

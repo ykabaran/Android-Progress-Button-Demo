@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#404040</color>
+
+    <color name="violet">#B24385</color>
+    <color name="blue">#248CC0</color>
+    <color name="green">#27B86F</color>
+    <color name="yellow">#DF9F02</color>
+    <color name="orange">#E14B00</color>
+    <color name="red">#C01315</color>
+
+    <array name="rainbow">
+        <item>@color/red</item>
+        <item>@color/orange</item>
+        <item>@color/yellow</item>
+        <item>@color/green</item>
+        <item>@color/blue</item>
+        <item>@color/violet</item>
+    </array>
+
+</resources>
